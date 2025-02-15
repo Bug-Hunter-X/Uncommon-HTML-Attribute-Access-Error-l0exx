@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is visible.
+  </div>
+
+  <script>
+    //Incorrectly attempting to access a non-existent property will not throw an error, it will return undefined
+    document.getElementById("myDiv").nonExistentProperty = "some value";
+
+    //However, attempting to access an attribute that doesn't exist, while seemingly similar, throws an error in some browsers.
+    document.getElementById("myDiv").getAttribute("nonExistentAttribute");
+  </script>
+</body>
+</html>
