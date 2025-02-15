@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is visible.
+  </div>
+
+  <script>
+    // Accessing non-existent properties is safe
+    document.getElementById("myDiv").nonExistentProperty = "some value";
+    console.log(document.getElementById("myDiv").nonExistentProperty); // logs undefined
+
+    // Robustly handle attribute access
+    let attributeValue = null;
+    try {
+      attributeValue = document.getElementById("myDiv").getAttribute("nonExistentAttribute");
+    } catch (error) {
+      console.error("Error accessing attribute:", error);
+      attributeValue = "Default value"; // Provide a default if the attribute is missing
+    }
+    console.log(attributeValue);
+  </script>
+</body>
+</html>
